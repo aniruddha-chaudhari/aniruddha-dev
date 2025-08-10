@@ -1,0 +1,70 @@
+// app/client-page.tsx
+"use client"
+
+import { Github, Code2, Layers } from 'lucide-react'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from "@/components/theme-provider"
+import Header from "@/components/header"
+import Hero from "@/components/hero"
+import SkillsGrid from "@/components/skills-grid"
+import ProjectsGrid from "@/components/projects-grid"
+import GithubContrib from "@/components/github-contrib"
+import DesignTokens from "@/components/design-tokens"
+import Section from "@/components/section"
+
+const inter = Inter({ subsets: ["latin"] })
+
+export default function Home() {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <div className="bg-[color:var(--bg)] text-[color:var(--fg)] flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">
+          <Hero />
+          <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />}>
+            <SkillsGrid />
+          </Section>
+          <Section id="projects" title="Projects" icon={<Layers className="h-5 w-5" />}>
+            <ProjectsGrid />
+          </Section>
+          <Section id="github" title="GitHub Contributions" icon={<Github className="h-5 w-5" />}>
+            <GithubContrib />
+          </Section>
+          <Section id="design" title="Design Tokens" icon={<Layers className="h-5 w-5" />}>
+            <DesignTokens />
+          </Section>
+        </main>
+      </div>
+    </ThemeProvider>
+  )
+}
+
+// components/header.tsx
+import Link from "next/link"
+import { Github } from 'lucide-react'
+
+export default function Header() {
+  return (
+    <header className="bg-[color:var(--bg)] text-[color:var(--fg)] p-4">
+      <nav className="flex justify-between">
+        <Link href="/" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+          Home
+        </Link>
+        <div className="flex space-x-4">
+          <Link href="#skills" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+            Skills
+          </Link>
+          <Link href="#projects" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+            Projects
+          </Link>
+          <Link href="#github" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+            GitHub
+          </Link>
+          <Link href="#design" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+            Design Tokens
+          </Link>
+        </div>
+      </nav>
+    </header>
+  )
+}

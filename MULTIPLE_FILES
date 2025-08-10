@@ -1,0 +1,312 @@
+components/design-tokens.tsx:
+\`\`\`tsx
+"use client"
+
+export default function DesignTokens() {
+  return (
+    <style jsx global>{`
+      :root {
+        --bg-900: #F7F7F8;
+        --bg-800: #F0F1F2;
+        --bg-700: #E7E8EA;
+        --fg: #0B0B0D;
+        --muted: #464646;
+        --accent: #9AA0A6;
+        --radius-xl: 1rem;
+
+        /* Light gradient (uses CSS variables so it will switch with theme) */
+        --grad-from: rgba(247,247,248,0.95);
+        --grad-to: rgba(231,232,234,0.95);
+
+        /* Smooth scroll for in-page anchors */
+        scroll-behavior: smooth;
+      }
+
+      /* IMPORTANT: Use .dark (class on html) instead of :root.dark */
+      .dark {
+        --bg-900: #0B0B0D;
+        --bg-800: #111214;
+        --bg-700: #1B1C1E;
+        --fg: #E8E8E8;
+        --muted: #B8B8B8;
+        --accent: #9AA0A6;
+        --radius-xl: 1rem;
+
+        /* Dark gradient */
+        --grad-from: rgba(10,10,12,0.95);
+        --grad-to: rgba(28,28,30,0.95);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        :root { scroll-behavior: auto; }
+      }
+
+      .rounded-2xl { border-radius: var(--radius-xl); }
+      .text-fg { color: var(--fg) }
+      .text-muted-fg { color: var(--muted) }
+    `}</style>
+  )
+}
+\`\`\`
+
+components/theme-toggle.tsx:
+\`\`\`tsx
+"use client"
+
+import { useTheme } from "next-themes"
+import { Moon, Sun } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
+
+export default function ThemeToggle() {
+  const { setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  const isDark = mounted ? resolvedTheme === "dark" : true
+
+  return (
+    <Button
+      variant="outline"
+      aria-label="Toggle theme"
+      className="h-9 w-9 border-white/10 bg-[color:var(--bg-700)]/60 text-[color:var(--fg)] hover:bg-[color:var(--bg-700)]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      title="Toggle light/dark"
+    >
+      <span className="sr-only">Toggle theme</span>
+      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </Button>
+  )
+}
+\`\`\`
+
+app/client-page.tsx:
+\`\`\`tsx
+"use client"
+
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from "@/components/theme-provider"
+import Header from "@/components/header"
+import Hero from "@/components/hero"
+import SkillsGrid from "@/components/skills-grid"
+import ProjectsGrid from "@/components/projects-grid"
+import GithubContrib from "@/components/github-contrib"
+import DesignTokens from "@/components/design-tokens"
+import Section from "@/components/section"
+import { Github, Code2, Layers } from 'lucide-react'
+
+const inter = Inter({ subsets: ["latin"], display: "swap" })
+
+export default function ClientPage() {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
+      <DesignTokens />
+
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 z-50 rounded-md bg-[var(--bg-700)] px-3 py-2 text-[var(--fg)] shadow focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+      >
+        Skip to content
+      </a>
+
+      <div
+        className="min-h-dvh"
+        style={{ background: "linear-gradient(135deg, var(--grad-from) 0%, var(--grad-to) 100%)" }}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url('/images/noise.png')", backgroundRepeat: "repeat" }}
+        />
+
+        <div className={`${inter.className} relative`}>
+          <Header />
+          <main id="content" className="relative">
+            <Section id="home" className="pt-10 md:pt-16">
+              <Hero />
+            </Section>
+            <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />}>
+              <SkillsGrid />
+            </Section>
+            <Section id="projects" title="Projects" icon={<Layers className="h-5 w-5" />}>
+              <ProjectsGrid />
+            </Section>
+            <Section id="github" title="GitHub" icon={<Github className="h-5 w-5" />}>
+              <GithubContrib username="aniruddha-chaudhari" />
+            </Section>
+          </main>
+        </div>
+      </div>
+    </ThemeProvider>
+  )
+}
+\`\`\`
+
+components/github-contrib.tsx:
+\`\`\`tsx
+"use client"
+
+import dynamic from "next/dynamic"
+import { useEffect, useState } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { GitFork, Star } from 'lucide-react'
+
+const GitHubCalendar = dynamic(() => import("react-github-calendar"), { ssr: false })
+
+type Stats = { totalStars: number; totalForks: number; publicRepos: number }
+
+export default function GithubContrib({ username = "aniruddha-chaudhari" }: { username?: string }) {
+  const [stats, setStats] = useState<Stats | null>(null)
+
+  useEffect(() => {
+    let mounted = true
+    fetch(`/api/github-stats?username=${encodeURIComponent(username)}`)
+      .then((r) => r.json())
+      .then((d) => { if (mounted) setStats(d) })
+      .catch(() => {})
+    return () => { mounted = false }
+  }, [username])
+
+  return (
+    <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-4 lg:grid-cols-[2fr_1fr]">
+      <Card className="rounded-2xl border-white/10 bg-[color:var(--bg-800)]/60 text-[color:var(--fg)] shadow-[0_6px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur supports-[backdrop-filter]:bg-[color:var(--bg-800)]/40">
+        <CardHeader>
+          <CardTitle className="text-base">Contributions</CardTitle>
+        </CardHeader>
+        <CardContent className="overflow-x-auto">
+          <div className="min-w-[640px]">
+            <GitHubCalendar
+              username={username}
+              colorScheme="auto"
+              blockSize={11}
+              blockMargin={4}
+              fontSize={12}
+              theme={{
+                light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+                dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+              }}
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl border-white/10 bg-[color:var(--bg-800)]/60 text-[color:var(--fg)] shadow-[0_6px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur supports-[backdrop-filter]:bg-[color:var(--bg-800)]/40">
+        <CardHeader>
+          <CardTitle className="text-base">Summary</CardTitle>
+        </CardHeader>
+        <CardContent className="flex items-center gap-6 text-sm text-[color:var(--muted)]">
+          <div className="flex items-center gap-2">
+            <Star className="h-4 w-4" />
+            <span className="text-[color:var(--fg)] font-medium">{stats?.totalStars ?? "—"}</span> stars
+          </div>
+          <div className="flex items-center gap-2">
+            <GitFork className="h-4 w-4" />
+            <span className="text-[color:var(--fg)] font-medium">{stats?.totalForks ?? "—"}</span> forks
+          </div>
+          <div className="ml-auto">
+            Repos: <span className="text-[color:var(--fg)] font-medium">{stats?.publicRepos ?? "—"}</span>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+\`\`\`
+
+components/header.tsx:
+\`\`\`tsx
+"use client"
+
+import Link from "next/link"
+import ThemeToggle from "@/components/theme-toggle"
+import { Rocket, Github } from 'lucide-react'
+
+export default function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-white/5 bg-[color:var(--bg-800)]/60 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--bg-800)]/40">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3">
+        <a
+          href="#home"
+          className="group inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+        >
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-[var(--fg)] ring-1 ring-white/10">
+            <Rocket className="h-4 w-4 transition-transform group-hover:rotate-12 motion-reduce:transition-none" />
+          </div>
+          <span className="font-medium tracking-tight text-[color:var(--fg)]">Your Name</span>
+        </a>
+        <nav aria-label="Primary" className="hidden items-center gap-6 text-sm text-[color:var(--muted)] sm:flex">
+          <a href="#skills" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">Skills</a>
+          <a href="#projects" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">Projects</a>
+          <a href="#github" className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">GitHub</a>
+          <a
+            href="https://github.com/aniruddha-chaudhari"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+            className="inline-flex items-center gap-2 hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          >
+            <Github className="h-4 w-4" />
+            <span className="hidden sm:inline">Profile</span>
+          </a>
+        </nav>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+  )
+}
+\`\`\`
+
+components/hero.tsx:
+\`\`\`tsx
+"use client"
+
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight, Download, Github } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 md:grid-cols-[240px_1fr] md:gap-10">
+      <div className="flex justify-center md:justify-start">
+        <div className="relative h-40 w-40 overflow-hidden rounded-full ring-1 ring-white/10 shadow-[0_8px_40px_-16px_rgba(0,0,0,0.6)]">
+          <Image src="/images/profile.png" alt="Profile photo" fill sizes="160px" className="object-cover" priority />
+        </div>
+      </div>
+      <div className="space-y-4 text-center md:text-left">
+        <div className="space-y-1">
+          <p className="text-sm uppercase tracking-widest text-[color:var(--muted)]">Software Engineer</p>
+          <h1 className="text-3xl font-bold leading-tight text-[color:var(--fg)] sm:text-4xl md:text-5xl">
+            Building elegant, accessible web experiences
+          </h1>
+          <p className="max-w-2xl text-[color:var(--muted)]">
+            I craft performant, resilient interfaces with a focus on clean architecture, great UX, and maintainable code.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:justify-start sm:gap-4">
+          <Button asChild className="group bg-[color:var(--bg-700)] text-[color:var(--fg)] hover:bg-[color:var(--bg-700)]/80">
+            <a href="#projects" aria-label="View Projects">
+              View Projects
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
+            </a>
+          </Button>
+          <Button asChild variant="outline" className="border-white/10 text-[color:var(--fg)] hover:bg-white/5 bg-transparent">
+            <a href="/cv.pdf" download aria-label="Download CV (PDF)">
+              <Download className="mr-2 h-4 w-4" />
+              Download CV
+            </a>
+          </Button>
+          <Button asChild variant="ghost" className="text-[color:var(--fg)] hover:bg-white/5">
+            <Link href="https://github.com/aniruddha-chaudhari" aria-label="View GitHub profile">
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+}
+\`\`\`

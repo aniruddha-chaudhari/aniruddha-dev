@@ -1,0 +1,64 @@
+{
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Monochrome UI Kit",
+      "description": "A minimal, accessible component kit focused on monochrome aesthetics and performance.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["React", "Tailwind", "Design"],
+      "live": "#",
+      "repo": "https://github.com/octocat/Hello-World",
+      "featured": true
+    },
+    {
+      "id": "p2",
+      "title": "Realtime Chat",
+      "description": "Lightweight chat application with optimistic updates and message persistence.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["Next.js", "TypeScript", "WS"],
+      "live": "#",
+      "repo": "#",
+      "featured": false
+    },
+    {
+      "id": "p3",
+      "title": "Data Viz Dash",
+      "description": "Performance-oriented dashboard with accessible charts and keyboard navigation.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["React", "Charts", "UX"],
+      "live": "#",
+      "repo": "#",
+      "featured": true
+    },
+    {
+      "id": "p4",
+      "title": "Headless CMS Blog",
+      "description": "Statically generated blog with MDX support and custom hooks for content.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["Next.js", "MDX", "SEO"],
+      "live": "#",
+      "repo": "#",
+      "featured": false
+    },
+    {
+      "id": "p5",
+      "title": "Image Optimizer",
+      "description": "Edge-native image processing with lazy loading and blur placeholders.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["Edge", "Performance", "DX"],
+      "live": "#",
+      "repo": "#",
+      "featured": false
+    },
+    {
+      "id": "p6",
+      "title": "Testing Toolkit",
+      "description": "High-confidence testing setup with component fixtures and visual regression.",
+      "image": "/placeholder.svg?height=360&width=640",
+      "tags": ["TypeScript", "Testing", "Tooling"],
+      "live": "#",
+      "repo": "#",
+      "featured": false
+    }
+  ]
+}

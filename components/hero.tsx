@@ -10,14 +10,21 @@ export default function Hero() {
     <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 md:grid-cols-[240px_1fr] md:gap-10">
       <div className="flex justify-center md:justify-start">
         <div className="relative h-40 w-40 overflow-hidden rounded-full ring-1 ring-white/10 shadow-[0_8px_40px_-16px_rgba(0,0,0,0.6)]">
-          <Image src="/images/profile.png" alt="Profile photo" fill sizes="160px" className="object-cover" priority />
+          <Image
+            src="https://github.com/aniruddha-chaudhari.png?size=240"
+            alt="aniruddha chaudhari profile photo"
+            fill
+            sizes="160px"
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
       <div className="space-y-4 text-center md:text-left">
         <div className="space-y-1">
           <p className="text-sm uppercase tracking-widest text-[color:var(--muted)]">Software Engineer</p>
-          <h1 className="text-3xl font-bold leading-tight text-[color:var(--fg)] sm:text-4xl md:text-5xl">
-            Building elegant, accessible web experiences
+          <h1 className="text-4xl font-bold leading-tight text-[color:var(--fg)] sm:text-5xl">
+            {"aniruddha chaudhari"}
           </h1>
           <p className="max-w-2xl text-[color:var(--muted)]">
             I craft performant, resilient interfaces with a focus on clean architecture, great UX, and maintainable
@@ -45,7 +52,7 @@ export default function Hero() {
             </a>
           </Button>
           <Button asChild variant="ghost" className="text-[color:var(--fg)] hover:bg-white/5">
-            <Link href="https://github.com/octocat" aria-label="View GitHub profile">
+            <Link href="https://github.com/aniruddha-chaudhari" aria-label="View GitHub profile">
               <Github className="mr-2 h-4 w-4" />
               GitHub
             </Link>

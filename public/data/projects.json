@@ -2,63 +2,40 @@
   "projects": [
     {
       "id": "p1",
-      "title": "Monochrome UI Kit",
-      "description": "A minimal, accessible component kit focused on monochrome aesthetics and performance.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["React", "Tailwind", "Design"],
-      "live": "#",
-      "repo": "https://github.com/octocat/Hello-World",
+      "title": "Nebulax-Arcade",
+      "description": "Purely Frontend project Made for hackathon",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1745747699/project_images/wpbkuhmpbnbyxhgyeifj.png",
+      "tags": ["NextJS", "PhaserJs", "TailwindCSS"],
+      "live": "https://nebulax-beige.vercel.app/",
+      "repo": "https://github.com/aniruddha-chaudhari/nebulax",
       "featured": true
     },
     {
-      "id": "p2",
-      "title": "Realtime Chat",
-      "description": "Lightweight chat application with optimistic updates and message persistence.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["Next.js", "TypeScript", "WS"],
-      "live": "#",
-      "repo": "#",
-      "featured": false
-    },
-    {
       "id": "p3",
-      "title": "Data Viz Dash",
-      "description": "Performance-oriented dashboard with accessible charts and keyboard navigation.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["React", "Charts", "UX"],
-      "live": "#",
-      "repo": "#",
+      "title": "Aether Cart",
+      "description": "A shopping cart application built with NextJs.",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754841832/Screenshot_2025-08-10_213126_kf12im.png",
+      "tags": ["NextJS","Gemini","zustand"],
+      "live": "https://aethercart.vercel.app/",
+      "repo": "https://github.com/aniruddha-chaudhari/aethercart",
       "featured": true
     },
     {
       "id": "p4",
-      "title": "Headless CMS Blog",
-      "description": "Statically generated blog with MDX support and custom hooks for content.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["Next.js", "MDX", "SEO"],
-      "live": "#",
-      "repo": "#",
-      "featured": false
+      "title": "TaleAI",
+      "description": "AI RAG application with internet search as feature using gemini API",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754846749/Screenshot_2025-04-22_192145_ljuyik.png",
+      "tags": ["NextJS", "Gemini", "Pinecone","Fastapi"],
+      "repo": "https://github.com/aniruddha-chaudhari/taleAI",
+      "featured": true
     },
-    {
-      "id": "p5",
-      "title": "Image Optimizer",
-      "description": "Edge-native image processing with lazy loading and blur placeholders.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["Edge", "Performance", "DX"],
-      "live": "#",
-      "repo": "#",
-      "featured": false
-    },
-    {
-      "id": "p6",
-      "title": "Testing Toolkit",
-      "description": "High-confidence testing setup with component fixtures and visual regression.",
-      "image": "/placeholder.svg?height=360&width=640",
-      "tags": ["TypeScript", "Testing", "Tooling"],
-      "live": "#",
-      "repo": "#",
-      "featured": false
+     {
+      "id": "p2",
+      "title": "MovieFlix",
+      "description": "MovieFlix is a Netflix-inspired streaming platform powered by the TMDB API, enabling users to explore, watch, and manage movies and TV shows with a dynamic and intuitive interface.",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1732721371/project_images/xnrcjql2xab7ayuystqo.png",
+      "tags": ["Reactjs", "MongoDB", "Express", "Node.js"],
+      "repo": "https://github.com/aniruddha-chaudhari/movieflix"
     }
   ]
 }

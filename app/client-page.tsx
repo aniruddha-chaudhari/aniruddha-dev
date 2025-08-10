@@ -1,7 +1,6 @@
 "use client"
 
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import SkillsChips from "@/components/skills-chips"
@@ -19,7 +18,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export default function ClientPage() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
+    <>
       <DesignTokens />
       <ResizeObserverFix />
 
@@ -85,6 +84,6 @@ export default function ClientPage() {
           <SocialDock />
         </div>
       </div>
-    </ThemeProvider>
+    </>
   )
 }

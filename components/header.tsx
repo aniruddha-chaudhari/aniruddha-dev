@@ -36,10 +36,10 @@ export default function Header() {
             Projects
           </a>
           <a
-            href="https://github.com/aniruddha-chaudhari"
+            href="#github"
             className="hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           >
-            GitHub
+            Git Contributions
           </a>
         </nav>
         <div className="flex items-center gap-2">

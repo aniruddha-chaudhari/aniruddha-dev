@@ -1,23 +1,40 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { Code2, Database, GitBranch, Globe, Layers, Rocket, Terminal, Wrench } from "lucide-react"
+import { 
+  Code2, 
+  Database, 
+  GitBranch, 
+  Globe, 
+  Layers, 
+  Rocket, 
+  Terminal, 
+  Wrench,
+  Server,
+  Smartphone,
+  Cloud,
+  Brain,
+  Container
+} from "lucide-react"
 
 const skills = [
   { name: "React", Icon: Code2 },
-  { name: "TypeScript", Icon: Terminal },
-  { name: "Tailwind", Icon: Layers },
-  { name: "Vite", Icon: Rocket },
+  { name: "Next.js", Icon: Rocket },
+  { name: "Express", Icon: Server },
+  { name: "FastApi", Icon: Globe },
+  { name: "MongoDB", Icon: Database },
+  { name: "PostgreSQL", Icon: Database },
+  { name: "React Native", Icon: Smartphone },
+  { name: "AWS EC2", Icon: Cloud },
+  { name: "Applied AI", Icon: Brain },
   { name: "Git", Icon: GitBranch },
-  { name: "API / REST", Icon: Globe },
-  { name: "Database", Icon: Database },
-  { name: "Tooling", Icon: Wrench },
+  { name: "Docker", Icon: Container },
 ] as const
 
 export default function SkillsChips() {
   return (
     <div className="px-4">
-      <p className="text-sm text-[color:var(--muted)]">A compact set of tools used daily.</p>
+      <p className="text-sm text-[color:var(--muted)]">Technologies that I use</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {skills.map(({ name, Icon }) => (
           <Badge

@@ -1,7 +1,6 @@
 "use client"
 
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 import DesignTokens from "@/components/design-tokens"
 import Header from "@/components/header"
 import Section from "@/components/section"
@@ -15,7 +14,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export default function ProjectsClientPage() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
+    <>
       <DesignTokens />
 
       <a
@@ -64,6 +63,6 @@ export default function ProjectsClientPage() {
           <SocialDock />
         </div>
       </div>
-    </ThemeProvider>
+    </>
   )
 }

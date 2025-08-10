@@ -4,6 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import { Github, Linkedin, Twitter, Mail, Globe } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useToast } from "@/components/ui/use-toast"
 
 type Social = {
   name: string
@@ -14,14 +15,48 @@ type Social = {
 const socials: Social[] = [
   { name: "GitHub", href: "https://github.com/aniruddha-chaudhari", icon: Github },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/aniruddha2704/", icon: Linkedin },
-  { name: "Twitter", href: "https://twitter.com/", icon: Twitter },
-  { name: "Website", href: "#", icon: Globe },
+  // { name: "Twitter", href: "https://twitter.com/", icon: Twitter },
+  // { name: "Website", href: "#", icon: Globe },
   { name: "Email", href: "mailto:aniruddhachaudhari2704@gmail.com", icon: Mail },
 ]
 
 export default function SocialDock() {
   const [isHovered, setIsHovered] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const { toast } = useToast()
+
+  const handleEmailClick = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    try {
+      await navigator.clipboard.writeText("aniruddhachaudhari2704@gmail.com")
+      toast({
+        title: "Email copied!",
+        description: "Email address has been copied to your clipboard.",
+        variant: "success",
+      })
+    } catch (err) {
+      // Fallback for browsers that don't support clipboard API
+      const textArea = document.createElement("textarea")
+      textArea.value = "aniruddhachaudhari2704@gmail.com"
+      document.body.appendChild(textArea)
+      textArea.select()
+      try {
+        document.execCommand("copy")
+        toast({
+          title: "Email copied!",
+          description: "Email address has been copied to your clipboard.",
+          variant: "success",
+        })
+      } catch (fallbackErr) {
+        toast({
+          title: "Copy failed",
+          description: "Unable to copy email address. Please copy it manually: aniruddhachaudhari2704@gmail.com",
+          variant: "destructive",
+        })
+      }
+      document.body.removeChild(textArea)
+    }
+  }
 
   return (
     <nav className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
@@ -51,6 +86,7 @@ export default function SocialDock() {
                     style={{ width: "40px", height: "40px" }}
                     aria-label={link.name}
                     onMouseEnter={() => setHoveredIndex(index)}
+                    onClick={link.name === "Email" ? handleEmailClick : undefined}
                   >
                     <div
                       className={`inline-flex size-10 items-center justify-center rounded-full text-sm font-medium transition-all duration-300 hover:bg-white/10`}
@@ -83,6 +119,7 @@ export default function SocialDock() {
             rel={s.href.startsWith("http") ? "noreferrer" : undefined}
             aria-label={s.name}
             className="rounded-full p-2 hover:bg-white/10"
+            onClick={s.name === "Email" ? handleEmailClick : undefined}
           >
             <s.icon size={16} className="text-[color:var(--fg)]" />
           </a>

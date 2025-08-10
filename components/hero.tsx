@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="space-y-1">
           <p className="text-sm uppercase tracking-widest text-[color:var(--muted)]">Software Engineer</p>
           <h1 className="text-4xl font-bold leading-tight text-[color:var(--fg)] sm:text-5xl">
-            {"aniruddha chaudhari"}
+            {"Aniruddha Chaudhari"}
           </h1>
           <p className="max-w-2xl text-[color:var(--muted)]">
             I craft performant, resilient interfaces with a focus on clean architecture, great UX, and maintainable
@@ -46,7 +46,7 @@ export default function Hero() {
             variant="outline"
             className="border-white/10 text-[color:var(--fg)] hover:bg-white/5 bg-transparent"
           >
-            <a href="/cv.pdf" download aria-label="Download CV (PDF)">
+            <a href="https://drive.google.com/file/d/1TkhQs73-b1tyvHTpDUAFnRaqfK2qZAQX/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Download CV (PDF)">
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </a>

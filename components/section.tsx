@@ -7,16 +7,32 @@ interface SectionProps {
   action?: React.ReactNode
   children: React.ReactNode
   className?: string
+  usePixelFont?: boolean
 }
 
-export default function Section({ id, title, icon, action, children, className = "" }: SectionProps) {
+export default function Section({
+  id,
+  title,
+  icon,
+  action,
+  children,
+  className = "",
+  usePixelFont = false,
+}: SectionProps) {
   return (
     <section id={id} className={`py-10 md:py-16 scroll-mt-24 md:scroll-mt-28 ${className}`}>
       <div className="mx-auto w-full max-w-6xl px-4">
         {title ? (
           <div className="mb-6 flex items-center gap-3">
             {icon ? <div className="text-[color:var(--muted)]">{icon}</div> : null}
-            <h2 className="text-xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-2xl">{title}</h2>
+            <h2
+              className={`text-xl font-semibold tracking-tight text-[color:var(--fg)] sm:text-2xl ${
+                usePixelFont ? "font-[family-name:var(--font-doto)] uppercase tracking-wider" : ""
+              }`}
+              style={usePixelFont ? { fontVariationSettings: '"ROND" 0' } : undefined}
+            >
+              {title}
+            </h2>
             {action ? <div className="ml-auto">{action}</div> : null}
           </div>
         ) : null}

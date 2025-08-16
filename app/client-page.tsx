@@ -1,6 +1,7 @@
 "use client"
 
 import { Inter } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import SkillsChips from "@/components/skills-chips"
@@ -18,7 +19,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export default function ClientPage() {
   return (
-    <>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
       <DesignTokens />
       <ResizeObserverFix />
 
@@ -53,7 +54,7 @@ export default function ClientPage() {
               <Hero />
             </Section>
 
-            <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />}>
+            <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />} usePixelFont={true}>
               <SkillsChips />
             </Section>
 
@@ -61,6 +62,7 @@ export default function ClientPage() {
               id="projects"
               title="Projects"
               icon={<Layers className="h-5 w-5" />}
+              usePixelFont={true}
               action={
                 <Link
                   href="/projects"
@@ -75,7 +77,7 @@ export default function ClientPage() {
               <FeaturedProjects />
             </Section>
 
-            <Section id="github" title="GitHub" icon={<Github className="h-5 w-5" />}>
+            <Section id="github" title="GitHub" icon={<Github className="h-5 w-5" />} usePixelFont={true}>
               <GithubContrib username="aniruddha-chaudhari" />
             </Section>
           </main>
@@ -84,6 +86,6 @@ export default function ClientPage() {
           <SocialDock />
         </div>
       </div>
-    </>
+    </ThemeProvider>
   )
 }

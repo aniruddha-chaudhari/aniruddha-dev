@@ -18,12 +18,6 @@ export default function ProjectsClientPage() {
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
       <DesignTokens />
 
-      <a
-        href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 z-50 rounded-md bg-[var(--bg-700)] px-3 py-2 text-[var(--fg)] shadow focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
-      >
-        Skip to content
-      </a>
 
       <div
         className="min-h-dvh"

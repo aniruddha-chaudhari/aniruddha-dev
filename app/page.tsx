@@ -6,7 +6,6 @@ export const metadata = {
     title: "Aniruddha Portfolio",
     description:
       "A calm, professional, minimal personal portfolio. Monochrome, responsive, accessible, with projects and GitHub activity.",
-    images: ["/images/og-placeholder.png"],
     type: "website",
   },
   twitter: {
@@ -14,7 +13,6 @@ export const metadata = {
     title: "Aniruddha Portfolio",
     description:
       "A calm, professional, minimal personal portfolio. Monochrome, responsive, accessible, with projects and GitHub activity.",
-    images: ["/images/og-placeholder.png"],
   },
 }
 

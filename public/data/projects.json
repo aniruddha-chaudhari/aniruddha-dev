@@ -33,9 +33,19 @@
       "id": "p2",
       "title": "MovieFlix",
       "description": "MovieFlix is a Netflix-inspired streaming platform powered by the TMDB API, enabling users to explore, watch, and manage movies and TV shows with a dynamic and intuitive interface.",
-      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1732721371/project_images/xnrcjql2xab7ayuystqo.png",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1759151286/a56d94c8-eab7-4d66-8972-015a35f43097.png",
       "tags": ["Reactjs", "MongoDB", "Express", "Node.js"],
       "repo": "https://github.com/aniruddha-chaudhari/movieflix"
+    },
+    {
+      "id": "p5",
+      "title": "Math Agent",
+      "description": "A comprehensive AI-powered math assistant featuring a FastAPI backend with vector database functionality and a React frontend built with Vite.",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1759151566/Screenshot_2025-09-29_182316_zurzt6.png",
+      "tags": ["FastAPI", "React", "Vite", "Qdrant", "Gemini", "LangChain"],
+      "repo": "https://github.com/aniruddha-chaudhari/mathagent",
+      "featured": true
     }
+    
   ]
 }

@@ -11,7 +11,7 @@
       "featured": true
     },
     {
-      "id": "p3",
+      "id": "p2",
       "title": "Aether Cart",
       "description": "A shopping cart application built with NextJs.",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754841832/Screenshot_2025-08-10_213126_kf12im.png",
@@ -21,7 +21,7 @@
       "featured": true
     },
     {
-      "id": "p4",
+      "id": "p3",
       "title": "TaleAI",
       "description": "AI RAG application with internet search as feature using gemini API",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754846749/Screenshot_2025-04-22_192145_ljuyik.png",
@@ -30,7 +30,7 @@
       "featured": true
     },
      {
-      "id": "p2",
+      "id": "p4",
       "title": "MovieFlix",
       "description": "MovieFlix is a Netflix-inspired streaming platform powered by the TMDB API, enabling users to explore, watch, and manage movies and TV shows with a dynamic and intuitive interface.",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1759151286/a56d94c8-eab7-4d66-8972-015a35f43097.png",

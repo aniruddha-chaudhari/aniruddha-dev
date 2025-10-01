@@ -12,7 +12,7 @@ export default function FeaturedProjects({ dataUrl = "/data/projects.json" }: { 
     fetch(dataUrl)
       .then((r) => r.json())
       .then((d) => {
-        const featured = (d.projects as Project[]).filter((p) => p.featured)
+        const featured = (d.projects as Project[]).filter((p) => p.featured).slice(0, 3)
         if (mounted) setItems(featured)
       })
       .finally(() => setLoading(false))

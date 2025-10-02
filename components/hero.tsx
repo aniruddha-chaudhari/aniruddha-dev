@@ -11,11 +11,11 @@ export default function Hero() {
       <div className="flex justify-center md:justify-start">
         <div className="relative h-40 w-40 overflow-hidden rounded-full ring-1 ring-white/10 shadow-[0_8px_40px_-16px_rgba(0,0,0,0.6)]">
           <Image
-            src="https://github.com/aniruddha-chaudhari.png?size=240"
+            src="/images/realprofile.jpg"
             alt="aniruddha chaudhari profile photo"
             fill
             sizes="160px"
-            className="object-cover"
+            className="object-cover grayscale hover:grayscale-0 transition duration-300"
             priority
           />
         </div>
@@ -46,7 +46,7 @@ export default function Hero() {
             variant="outline"
             className="border-white/10 text-[color:var(--fg)] hover:bg-white/5 bg-transparent"
           >
-            <a href="https://drive.google.com/file/d/1TkhQs73-b1tyvHTpDUAFnRaqfK2qZAQX/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Download CV (PDF)">
+            <a href="https://drive.google.com/file/d/1VQ517xCgiIP63xAu2NYI6ZcuSX-mp4mw/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Download CV (PDF)">
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </a>

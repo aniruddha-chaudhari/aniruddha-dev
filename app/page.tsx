@@ -7,7 +7,6 @@ import GithubContrib from "@/components/github-contrib"
 import Section from "@/components/section"
 import SocialDock from "@/components/social-dock"
 import VisitorsCounter from "@/components/visitors-counter"
-import ClientWrapper from "@/components/client-wrapper"
 import { Github, Code2, Layers, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
@@ -33,11 +32,10 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <ClientWrapper>
-      <div
-        className="min-h-dvh"
-        style={{ background: "linear-gradient(135deg, var(--grad-from) 0%, var(--grad-to) 100%)" }}
-      >
+    <div
+      className="min-h-dvh"
+      style={{ background: "linear-gradient(135deg, var(--grad-from) 0%, var(--grad-to) 100%)" }}
+    >
         {/* Theme-aware texture overlay */}
         <div
           aria-hidden="true"
@@ -90,6 +88,5 @@ export default function Page() {
           <SocialDock />
         </div>
       </div>
-    </ClientWrapper>
   )
 }

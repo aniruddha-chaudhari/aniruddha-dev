@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import path from "path"
-import ProjectCard, { type Project } from "@/components/project-card"
+import ProjectCardServer from "@/components/project-card-server"
+import type { Project } from "@/components/project-card"
 
 interface ProjectsData {
   projects: Project[]
@@ -28,7 +29,7 @@ export default async function FeaturedProjectsServer() {
   return (
     <div role="list" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((p) => (
-        <ProjectCard key={p.id} project={p} />
+        <ProjectCardServer key={p.id} project={p} />
       ))}
     </div>
   )

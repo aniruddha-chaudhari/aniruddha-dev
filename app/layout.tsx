@@ -4,6 +4,8 @@ import { GeistMono } from 'geist/font/mono'
 import { Doto } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
+import ResizeObserverFix from "@/components/resizeobserver-fix"
+import DesignTokens from "@/components/design-tokens"
 import './globals.css'
 
 const doto = Doto({
@@ -37,6 +39,8 @@ html {
       </head>
       <body className={`${doto.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
+          <DesignTokens />
+          <ResizeObserverFix />
           {children}
           <Toaster />
         </ThemeProvider>

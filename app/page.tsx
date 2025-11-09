@@ -30,9 +30,7 @@ export const metadata = {
   },
 }
 
-// Force static generation at build time
-export const dynamic = 'force-static'
-export const revalidate = false // Never revalidate (true static)
+
 
 export default function Page() {
   return (

@@ -7,7 +7,7 @@ import GithubContrib from "@/components/github-contrib"
 import Section from "@/components/section"
 import SocialDock from "@/components/social-dock"
 import VisitorsCounter from "@/components/visitors-counter"
-import { Github, Code2, Layers, ArrowRight } from "lucide-react"
+import { Github, Code2, Layers, ArrowRight, TreeDeciduous } from "lucide-react"
 import Link from "next/link"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
@@ -58,7 +58,19 @@ export default function Page() {
               <HeroServer />
             </Section>
 
-            <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />} usePixelFont={true}>
+            <Section id="skills" title="Skills" icon={<Code2 className="h-5 w-5" />} usePixelFont={true}
+              action={
+                <Link
+                  href="/skill-tree"
+                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  aria-label="View skill tree"
+                >
+                  <TreeDeciduous className="h-4 w-4" />
+                  Skill Tree
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              }
+            >
               <SkillsChipsServer />
             </Section>
 

@@ -9,16 +9,14 @@ import { GitFork, Star } from "lucide-react"
 console.log('[DEBUG] github-contrib.tsx: Module loaded')
 
 // react-github-calendar uses DOM; load client-side only.
-const GitHubCalendar = dynamic(() => {
-  console.log('[DEBUG] github-contrib.tsx: Dynamic import starting')
-  return import("react-github-calendar").then(mod => {
-    console.log('[DEBUG] github-contrib.tsx: Dynamic import complete')
-    return mod
-  }).catch(err => {
-    console.error('[DEBUG] github-contrib.tsx: Dynamic import FAILED:', err)
-    throw err
-  })
-}, { ssr: false })
+// Must return mod.default for Next.js dynamic import to work correctly
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar").then(mod => {
+    console.log('[DEBUG] github-contrib.tsx: Dynamic import complete, mod.default exists:', !!mod.default)
+    return mod.default
+  }),
+  { ssr: false }
+)
 
 type Stats = {
   totalStars: number

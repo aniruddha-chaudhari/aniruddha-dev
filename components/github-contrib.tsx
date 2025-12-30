@@ -6,15 +6,10 @@ import { useTheme } from "next-themes"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GitFork, Star } from "lucide-react"
 
-console.log('[DEBUG] github-contrib.tsx: Module loaded')
-
 // react-github-calendar uses DOM; load client-side only.
-// Must return mod.default for Next.js dynamic import to work correctly
+// Next.js dynamic() expects a module-like object with a 'default' property
 const GitHubCalendar = dynamic(
-  () => import("react-github-calendar").then(mod => {
-    console.log('[DEBUG] github-contrib.tsx: Dynamic import complete, mod.default exists:', !!mod.default)
-    return mod.default
-  }),
+  () => import("react-github-calendar").then(mod => ({ default: mod.default })),
   { ssr: false }
 )
 

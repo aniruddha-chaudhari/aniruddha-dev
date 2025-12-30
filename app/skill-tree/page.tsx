@@ -51,6 +51,7 @@ export default function SkillTreePage() {
             title="Skill Tree" 
             icon={<TreeDeciduous className="h-5 w-5" />}
             usePixelFont={true}
+            className="py-4 md:py-6"
           >
             <SkillTreeClient />
           </Section>

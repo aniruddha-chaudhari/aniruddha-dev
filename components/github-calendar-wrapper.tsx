@@ -1,8 +1,9 @@
 "use client"
 
-import GitHubCalendar from "react-github-calendar"
+import OriginalGitHubCalendar from "react-github-calendar"
+import type { ComponentProps } from "react"
 
-// Simple wrapper component to avoid ESM/CJS interop issues with dynamic imports
-export default function GitHubCalendarWrapper(props: React.ComponentProps<typeof GitHubCalendar>) {
-    return <GitHubCalendar {...props} />
+// Re-export as named export for proper Next.js dynamic() handling
+export function GitHubCalendar(props: ComponentProps<typeof OriginalGitHubCalendar>) {
+    return <OriginalGitHubCalendar {...props} />
 }

@@ -6,8 +6,19 @@ import { useTheme } from "next-themes"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GitFork, Star } from "lucide-react"
 
+console.log('[DEBUG] github-contrib.tsx: Module loaded')
+
 // react-github-calendar uses DOM; load client-side only.
-const GitHubCalendar = dynamic(() => import("react-github-calendar"), { ssr: false })
+const GitHubCalendar = dynamic(() => {
+  console.log('[DEBUG] github-contrib.tsx: Dynamic import starting')
+  return import("react-github-calendar").then(mod => {
+    console.log('[DEBUG] github-contrib.tsx: Dynamic import complete')
+    return mod
+  }).catch(err => {
+    console.error('[DEBUG] github-contrib.tsx: Dynamic import FAILED:', err)
+    throw err
+  })
+}, { ssr: false })
 
 type Stats = {
   totalStars: number

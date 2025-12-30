@@ -1,8 +1,11 @@
 "use client"
 
+console.log('[DEBUG] design-tokens.tsx: Module loaded')
+
 // Theme tokens and background texture variables.
 // Light mode uses the provided halftone art; dark mode keeps a subtle repeating dither.
 export default function DesignTokens() {
+  console.log('[DEBUG] DesignTokens: Rendering')
   return (
     <style jsx global>{`
       :root {

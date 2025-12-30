@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 
+console.log('[DEBUG] visitors-counter.tsx: Module loaded')
+
 interface VisitorResponse {
   value: number
   isNew?: boolean
@@ -9,32 +11,35 @@ interface VisitorResponse {
 }
 
 export default function VisitorsCounter({ className = "" }: { className?: string }) {
+  console.log('[DEBUG] VisitorsCounter: Rendering')
   const [value, setValue] = useState<number | null>(null)
   const [isNew, setIsNew] = useState<boolean | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    console.log('[DEBUG] VisitorsCounter: useEffect running')
     let mounted = true
-    
+
     const fetchVisitors = async () => {
       try {
+        console.log('[DEBUG] VisitorsCounter: Fetching visitors API')
         setLoading(true)
         setError(null)
-        
-        const response = await fetch("/api/visitors", { 
+
+        const response = await fetch("/api/visitors", {
           cache: "no-store",
           credentials: 'include' // Important for cookies
         })
-        
+
         if (!mounted) return
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        
+
         const data: VisitorResponse = await response.json()
-        
+
         if (mounted) {
           if (data.error) {
             setError(data.error)
@@ -57,7 +62,7 @@ export default function VisitorsCounter({ className = "" }: { className?: string
     }
 
     fetchVisitors()
-    
+
     return () => {
       mounted = false
     }
@@ -71,12 +76,12 @@ export default function VisitorsCounter({ className = "" }: { className?: string
           <span className="font-medium text-[color:var(--fg)]">Loading...</span>
         ) : error ? (
           <span className="font-medium text-red-500">Error loading count</span>
-        ) 
-        : (
-          <span className="font-medium text-[color:var(--fg)]">
-            {value?.toLocaleString() ?? "—"}
-          </span>
-        )}
+        )
+          : (
+            <span className="font-medium text-[color:var(--fg)]">
+              {value?.toLocaleString() ?? "—"}
+            </span>
+          )}
       </p>
     </div>
   )

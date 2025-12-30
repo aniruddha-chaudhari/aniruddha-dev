@@ -2,10 +2,14 @@
 
 import { useEffect } from "react"
 
+console.log('[DEBUG] resizeobserver-fix.tsx: Module loaded')
+
 // Suppress noisy ResizeObserver errors in Chrome that bubble as uncaught errors.
 // This does NOT hide other errors.
 export default function ResizeObserverFix() {
+  console.log('[DEBUG] ResizeObserverFix: Rendering')
   useEffect(() => {
+    console.log('[DEBUG] ResizeObserverFix: useEffect running')
     const handler = (e: ErrorEvent) => {
       const msg = String(e?.message ?? "")
       if (

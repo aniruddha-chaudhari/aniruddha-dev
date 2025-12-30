@@ -6,6 +6,8 @@ import { Github, Linkedin, Twitter, Mail, Globe } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useToast } from "@/components/ui/use-toast"
 
+console.log('[DEBUG] social-dock.tsx: Module loaded')
+
 type Social = {
   name: string
   href: string
@@ -80,9 +82,8 @@ export default function SocialDock() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    className={`flex aspect-square cursor-pointer items-center justify-center transition-all duration-300 px-1 ${
-                      isHovered ? "scale-100" : "scale-95"
-                    } ${hoveredIndex === index ? "scale-110 mx-2" : "mx-0"}`}
+                    className={`flex aspect-square cursor-pointer items-center justify-center transition-all duration-300 px-1 ${isHovered ? "scale-100" : "scale-95"
+                      } ${hoveredIndex === index ? "scale-110 mx-2" : "mx-0"}`}
                     style={{ width: "40px", height: "40px" }}
                     aria-label={link.name}
                     onMouseEnter={() => setHoveredIndex(index)}
@@ -93,9 +94,8 @@ export default function SocialDock() {
                     >
                       <link.icon
                         size={16}
-                        className={`transition-transform duration-300 text-[color:var(--fg)] ${
-                          hoveredIndex === index ? "scale-110" : "scale-100"
-                        }`}
+                        className={`transition-transform duration-300 text-[color:var(--fg)] ${hoveredIndex === index ? "scale-110" : "scale-100"
+                          }`}
                       />
                     </div>
                   </a>

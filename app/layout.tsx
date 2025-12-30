@@ -2,11 +2,10 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Doto } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
-import { Toaster } from '@/components/ui/toaster'
-import ResizeObserverFix from "@/components/resizeobserver-fix"
-import DesignTokens from "@/components/design-tokens"
+import ClientProviders from '@/components/client-providers'
 import './globals.css'
+
+console.log('[DEBUG] layout.tsx: Module loaded successfully')
 
 const doto = Doto({
   subsets: ["latin"],
@@ -25,6 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  console.log('[DEBUG] RootLayout: Rendering')
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -38,13 +38,11 @@ html {
         `}</style>
       </head>
       <body className={`${doto.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="mono-theme">
-          <DesignTokens />
-          <ResizeObserverFix />
+        <ClientProviders>
           {children}
-          <Toaster />
-        </ThemeProvider>
+        </ClientProviders>
       </body>
     </html>
   )
 }
+

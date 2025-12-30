@@ -5,8 +5,6 @@ import { Doto } from 'next/font/google'
 import ClientProviders from '@/components/client-providers'
 import './globals.css'
 
-console.log('[DEBUG] layout.tsx: Module loaded successfully')
-
 const doto = Doto({
   subsets: ["latin"],
   display: "swap",
@@ -24,7 +22,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  console.log('[DEBUG] RootLayout: Rendering')
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -45,4 +42,3 @@ html {
     </html>
   )
 }
-

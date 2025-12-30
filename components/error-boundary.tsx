@@ -2,8 +2,6 @@
 
 import React from "react"
 
-console.log('[DEBUG] error-boundary.tsx: Module loaded')
-
 interface ErrorBoundaryState {
     hasError: boolean
     error: Error | null
@@ -19,26 +17,18 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
     constructor(props: ErrorBoundaryProps) {
         super(props)
         this.state = { hasError: false, error: null, errorInfo: null }
-        console.log('[DEBUG] ErrorBoundary: Constructor called')
     }
 
     static getDerivedStateFromError(error: Error): Partial<ErrorBoundaryState> {
-        console.error('[DEBUG] ErrorBoundary: getDerivedStateFromError called with:', error)
         return { hasError: true, error }
     }
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-        console.error('[DEBUG] ErrorBoundary: componentDidCatch called')
-        console.error('[DEBUG] ErrorBoundary: Error:', error)
-        console.error('[DEBUG] ErrorBoundary: Error Info:', errorInfo)
-        console.error('[DEBUG] ErrorBoundary: Component Stack:', errorInfo.componentStack)
         this.setState({ errorInfo })
     }
 
     render() {
         if (this.state.hasError) {
-            console.log('[DEBUG] ErrorBoundary: Rendering error state')
-
             if (this.props.fallback) {
                 return this.props.fallback
             }
@@ -73,7 +63,6 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
             )
         }
 
-        console.log('[DEBUG] ErrorBoundary: Rendering children')
         return this.props.children
     }
 }

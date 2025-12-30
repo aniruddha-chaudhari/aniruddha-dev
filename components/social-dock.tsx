@@ -6,8 +6,6 @@ import { Github, Linkedin, Twitter, Mail, Globe } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useToast } from "@/components/ui/use-toast"
 
-console.log('[DEBUG] social-dock.tsx: Module loaded')
-
 type Social = {
   name: string
   href: string
@@ -17,8 +15,6 @@ type Social = {
 const socials: Social[] = [
   { name: "GitHub", href: "https://github.com/aniruddha-chaudhari", icon: Github },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/aniruddha2704/", icon: Linkedin },
-  // { name: "Twitter", href: "https://twitter.com/", icon: Twitter },
-  // { name: "Website", href: "#", icon: Globe },
   { name: "Email", href: "mailto:aniruddhachaudhari2704@gmail.com", icon: Mail },
 ]
 
@@ -37,7 +33,6 @@ export default function SocialDock() {
         variant: "success",
       })
     } catch (err) {
-      // Fallback for browsers that don't support clipboard API
       const textArea = document.createElement("textarea")
       textArea.value = "aniruddhachaudhari2704@gmail.com"
       document.body.appendChild(textArea)

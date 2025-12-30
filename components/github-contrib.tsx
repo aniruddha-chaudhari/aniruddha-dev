@@ -1,20 +1,10 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GitFork, Star } from "lucide-react"
-
-// react-github-calendar uses DOM; load client-side only.
-// Use named export pattern to properly handle dynamic imports in production
-const GitHubCalendar = dynamic(
-  () => import("@/components/github-calendar-wrapper").then(mod => ({ default: mod.GitHubCalendar })),
-  {
-    ssr: false,
-    loading: () => <div className="h-[160px] w-full rounded-lg bg-[color:var(--bg-800)]/40 animate-pulse" />
-  }
-)
+import { GitHubCalendar } from "@/components/github-calendar-wrapper"
 
 type Stats = {
   totalStars: number

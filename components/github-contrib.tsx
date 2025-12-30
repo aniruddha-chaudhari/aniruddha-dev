@@ -7,16 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GitFork, Star } from "lucide-react"
 
 // react-github-calendar uses DOM; load client-side only.
-// Handle both ESM (mod.default) and CJS (mod itself) module formats for production compatibility
+// Use a wrapper component to avoid ESM/CJS interop issues with dynamic imports in production
 const GitHubCalendar = dynamic(
-  () => import("react-github-calendar").then(mod => {
-    // Some bundlers use mod.default (ESM), others use mod directly (CJS interop)
-    const Component = mod.default || mod
-    if (!Component) {
-      throw new Error("Failed to load react-github-calendar component")
-    }
-    return { default: Component }
-  }),
+  () => import("@/components/github-calendar-wrapper"),
   {
     ssr: false,
     loading: () => <div className="h-[160px] w-full rounded-lg bg-[color:var(--bg-800)]/40 animate-pulse" />

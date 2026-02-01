@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Doto } from 'next/font/google'
 import ClientProviders from '@/components/client-providers'
+import { Analytics } from "@vercel/analytics/next"
 import './globals.css'
 
 const doto = Doto({
@@ -37,6 +38,7 @@ html {
       <body className={`${doto.variable}`}>
         <ClientProviders>
           {children}
+          <Analytics />
         </ClientProviders>
       </body>
     </html>

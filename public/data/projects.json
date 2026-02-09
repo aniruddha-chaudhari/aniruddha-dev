@@ -13,9 +13,9 @@
     {
       "id": "p7",
       "title": "OpenClaw",
-      "description": "Modern e-commerce and shopping cart experience built with Next.js.",
+      "description": "modern 3d website with animations and interactions",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1770666905/Screenshot_2026-02-10_011616_jsfum3.png",
-      "tags": ["NextJS", "Gemini", "zustand"],
+      "tags": ["NextJS", "ThreeJS", "zustand"],
       "live": "https://openclaw-kappa-bay.vercel.app/",
       "repo": "",
       "featured": true

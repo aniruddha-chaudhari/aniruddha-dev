@@ -11,21 +11,31 @@
       "featured": true
     },
     {
-      "id": "p2",
+      "id": "p7",
       "title": "OpenClaw",
-      "description": "A shopping cart application built with NextJs.",
+      "description": "Modern e-commerce and shopping cart experience built with Next.js.",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1770666905/Screenshot_2026-02-10_011616_jsfum3.png",
-      "tags": ["NextJS","Gemini","zustand"],
+      "tags": ["NextJS", "Gemini", "zustand"],
       "live": "https://openclaw-kappa-bay.vercel.app/",
-      "repo": "https://github.com/aniruddha-chaudhari/aethercart",
+      "repo": "",
       "featured": true
+    },
+    {
+      "id": "p2",
+      "title": "Aether Cart",
+      "description": "A shopping cart application built with NextJs.",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754841832/Screenshot_2025-08-10_213126_kf12im.png",
+      "tags": ["NextJS", "Gemini", "zustand"],
+      "live": "https://aethercart.vercel.app/",
+      "repo": "https://github.com/aniruddha-chaudhari/aethercart",
+      "featured": false
     },
     {
       "id": "p3",
       "title": "TaleAI",
       "description": "AI RAG application with internet search as feature using gemini API",
       "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754846749/Screenshot_2025-04-22_192145_ljuyik.png",
-      "tags": ["NextJS", "Gemini", "Pinecone","Fastapi"],
+      "tags": ["NextJS", "Gemini", "Pinecone", "Fastapi"],
       "repo": "https://github.com/aniruddha-chaudhari/taleAI"
     },
     {
@@ -38,7 +48,7 @@
       "repo": "https://github.com/aniruddha-chaudhari/gemai",
       "featured": true
     },
-     {
+    {
       "id": "p5",
       "title": "MovieFlix",
       "description": "MovieFlix is a Netflix-inspired streaming platform powered by the TMDB API, enabling users to explore, watch, and manage movies and TV shows with a dynamic and intuitive interface.",
@@ -55,6 +65,5 @@
       "repo": "https://github.com/aniruddha-chaudhari/mathagent",
       "featured": true
     }
-    
   ]
 }

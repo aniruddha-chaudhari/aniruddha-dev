@@ -12,11 +12,11 @@
     },
     {
       "id": "p2",
-      "title": "Aether Cart",
+      "title": "OpenClaw",
       "description": "A shopping cart application built with NextJs.",
-      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1754841832/Screenshot_2025-08-10_213126_kf12im.png",
+      "image": "https://res.cloudinary.com/durntqv4o/image/upload/v1770666905/Screenshot_2026-02-10_011616_jsfum3.png",
       "tags": ["NextJS","Gemini","zustand"],
-      "live": "https://aethercart.vercel.app/",
+      "live": "https://openclaw-kappa-bay.vercel.app/",
       "repo": "https://github.com/aniruddha-chaudhari/aethercart",
       "featured": true
     },

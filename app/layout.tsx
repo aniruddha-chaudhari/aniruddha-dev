@@ -5,6 +5,7 @@ import { Doto } from 'next/font/google'
 import ClientProviders from '@/components/client-providers'
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { getSiteUrl } from "@/lib/site-url"
 import './globals.css'
 
 const doto = Doto({
@@ -14,9 +15,30 @@ const doto = Doto({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: "Aniruddha • Full‑stack Developer",
+    template: "%s • Aniruddha",
+  },
+  description:
+    "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Aniruddha • Full‑stack Developer",
+    description:
+      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
+    siteName: "Aniruddha",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aniruddha • Full‑stack Developer",
+    description:
+      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
+  },
 }
 
 export default function RootLayout({
@@ -24,6 +46,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      url: getSiteUrl(),
+      name: "Aniruddha",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Aniruddha Chaudhari",
+      url: getSiteUrl(),
+      sameAs: [
+        "https://github.com/aniruddha-chaudhari",
+      ],
+    },
+  ]
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -35,6 +75,10 @@ html {
   --font-doto: ${doto.variable};
 }
         `}</style>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${doto.variable}`}>
         <ClientProviders>

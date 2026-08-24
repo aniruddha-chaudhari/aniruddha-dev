@@ -9,7 +9,7 @@ export default function HeroServer() {
         <div className="relative h-40 w-40 overflow-hidden rounded-full ring-1 ring-white/10 shadow-[0_8px_40px_-16px_rgba(0,0,0,0.6)]">
           <Image
             src="/images/realprofile.jpg"
-            alt="aniruddha chaudhari profile photo"
+            alt="Aniruddha Chaudhari, software engineer"
             fill
             sizes="160px"
             className="object-cover grayscale hover:grayscale-0 transition duration-300"
@@ -19,13 +19,13 @@ export default function HeroServer() {
       </div>
       <div className="space-y-4 text-center md:text-left">
         <div className="space-y-1">
-          <p className="text-sm uppercase tracking-widest text-[color:var(--muted)]">Software Engineer</p>
+          <p className="text-sm uppercase tracking-widest text-[color:var(--muted)]">Software Engineer & Full-Stack Developer</p>
           <h1 className="text-4xl font-bold leading-tight text-[color:var(--fg)] sm:text-5xl">
             {"Aniruddha Chaudhari"}
           </h1>
           <p className="max-w-2xl text-[color:var(--muted)]">
-            I craft performant, resilient interfaces with a focus on clean architecture, great UX, and maintainable
-            code.
+            I build full-stack web applications and AI-powered products with Next.js, React, FastAPI, and modern
+            backend and cloud technologies, with a focus on performance, clean architecture, and maintainable code.
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-start sm:gap-4">
@@ -33,7 +33,7 @@ export default function HeroServer() {
             asChild
             className="group bg-[color:var(--bg-700)] text-[color:var(--fg)] hover:bg-[color:var(--bg-700)]/80"
           >
-            <a href="#projects" aria-label="View Projects">
+            <a href="#projects" aria-label="View software engineering projects">
               View Projects
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
             </a>
@@ -43,7 +43,7 @@ export default function HeroServer() {
             variant="outline"
             className="border-white/10 text-[color:var(--fg)] hover:bg-white/5 bg-transparent"
           >
-            <a href="https://drive.google.com/file/d/1VQ517xCgiIP63xAu2NYI6ZcuSX-mp4mw/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Download CV (PDF)">
+            <a href="https://drive.google.com/file/d/1VQ517xCgiIP63xAu2NYI6ZcuSX-mp4mw/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Download Aniruddha Chaudhari CV (PDF)">
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </a>

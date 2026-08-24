@@ -14,7 +14,9 @@ import Link from "next/link"
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
+  title: {
+    absolute: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
+  },
   description:
     "Portfolio of Aniruddha Chaudhari, a software engineer building full-stack web applications with Next.js, React, FastAPI, AI, and modern cloud technologies.",
   alternates: {

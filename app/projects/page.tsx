@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Header from "@/components/header"
 import Section from "@/components/section"
@@ -9,9 +10,20 @@ import { ArrowLeft } from "lucide-react"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
-export const metadata = {
-  title: "All Projects • Monochrome Portfolio",
-  description: "Browse all projects with filters and tags.",
+export const metadata: Metadata = {
+  title: "Software Engineering Projects",
+  description:
+    "Explore full-stack, AI, Next.js, React, FastAPI, and creative web projects built by software engineer Aniruddha Chaudhari.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Software Engineering Projects | Aniruddha Chaudhari",
+    description:
+      "A collection of full-stack, AI, Next.js, React, FastAPI, and interactive web projects by Aniruddha Chaudhari.",
+    url: "/projects",
+    type: "website",
+  },
 }
 
 export default function ProjectsPage() {
@@ -46,7 +58,13 @@ export default function ProjectsPage() {
             </Link>
           </div>
 
-          <Section id="projects" title="All Projects" usePixelFont={true}>
+          <Section id="projects" title="Software Engineering Projects" usePixelFont={true}>
+            <div className="mx-auto mb-6 w-full max-w-6xl px-4">
+              <p className="max-w-3xl text-sm leading-6 text-[color:var(--muted)] md:text-base">
+                Full-stack, AI, and interactive web projects built with technologies including Next.js, React,
+                FastAPI, Gemini, Three.js, MongoDB, Qdrant, and Pinecone.
+              </p>
+            </div>
             <ProjectsGridServer />
           </Section>
         </main>

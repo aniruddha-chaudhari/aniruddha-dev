@@ -37,9 +37,6 @@ export const metadata: Metadata = {
     "FastAPI developer",
     "AI developer",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     url: "/",

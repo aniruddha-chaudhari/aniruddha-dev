@@ -1,9 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ArrowRight } from "lucide-react"
+import { projectSlug } from "@/lib/project-slug"
 
 export type Project = {
   id: string
@@ -18,6 +20,7 @@ export type Project = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { title, description, image, tags, live, repo } = project
+  const detailsHref = `/projects/${projectSlug(title)}`
 
   return (
     <article
@@ -25,19 +28,27 @@ export default function ProjectCard({ project }: { project: Project }) {
       role="listitem"
     >
       <div className="flex h-full flex-col p-3">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl ring-1 ring-white/10">
+        <Link
+          href={detailsHref}
+          className="relative aspect-[16/9] w-full overflow-hidden rounded-xl ring-1 ring-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          aria-label={`View ${title} project details`}
+        >
           <Image
             src={image || "/placeholder.svg?height=360&width=640&query=monochrome%20project%20cover"}
-            alt={`${title} cover`}
+            alt={`${title} project screenshot`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none"
           />
-        </div>
+        </Link>
 
         <div className="flex-1 space-y-3 pt-3">
           <div className="px-1">
-            <h3 className="text-lg font-semibold">{title}</h3>
+            <h3 className="text-lg font-semibold">
+              <Link href={detailsHref} className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]">
+                {title}
+              </Link>
+            </h3>
             {description ? <p className="mt-1 text-sm text-[color:var(--muted)]">{description}</p> : null}
           </div>
 
@@ -55,7 +66,13 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 px-1 pb-1 pt-2">
+        <div className="flex flex-wrap items-center gap-2 px-1 pb-1 pt-2">
+          <Button asChild size="sm" variant="ghost">
+            <Link href={detailsHref} aria-label={`Read more about ${title}`}>
+              Details
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
           {live ? (
             <Button
               asChild

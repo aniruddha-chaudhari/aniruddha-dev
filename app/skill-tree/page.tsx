@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Header from "@/components/header"
 import Section from "@/components/section"
@@ -9,9 +10,20 @@ import SkillTreeClient from "./skill-tree-client"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
-export const metadata = {
-  title: "Skill Tree • Aniruddha Portfolio",
-  description: "Explore my skill tree - see what I've mastered, what I'm learning, and what's next on my journey.",
+export const metadata: Metadata = {
+  title: "Developer Skills & Technology Stack",
+  description:
+    "Explore Aniruddha Chaudhari's software engineering skill tree across Next.js, React, backend development, AI, databases, and modern web technologies.",
+  alternates: {
+    canonical: "/skill-tree",
+  },
+  openGraph: {
+    title: "Developer Skills & Technology Stack | Aniruddha Chaudhari",
+    description:
+      "Aniruddha Chaudhari's software engineering skills across frontend, backend, AI, databases, and modern web development.",
+    url: "/skill-tree",
+    type: "website",
+  },
 }
 
 export default function SkillTreePage() {

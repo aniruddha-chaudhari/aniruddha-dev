@@ -14,30 +14,40 @@ const doto = Doto({
   variable: "--font-doto",
 })
 
+const siteDescription =
+  "Aniruddha Chaudhari is a software engineer and full-stack developer building modern web applications with Next.js, React, FastAPI, AI, and cloud technologies."
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Aniruddha • Full‑stack Developer",
-    template: "%s • Aniruddha",
+    default: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
+    template: "%s | Aniruddha Chaudhari",
   },
-  description:
-    "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
-  alternates: {
-    canonical: "/",
-  },
+  description: siteDescription,
+  applicationName: "Aniruddha Chaudhari Portfolio",
+  authors: [{ name: "Aniruddha Chaudhari", url: getSiteUrl() }],
+  creator: "Aniruddha Chaudhari",
+  publisher: "Aniruddha Chaudhari",
+  keywords: [
+    "Aniruddha Chaudhari",
+    "software engineer",
+    "full-stack developer",
+    "Next.js developer",
+    "React developer",
+    "FastAPI developer",
+    "AI developer",
+  ],
   openGraph: {
     type: "website",
     url: "/",
-    title: "Aniruddha • Full‑stack Developer",
-    description:
-      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
-    siteName: "Aniruddha",
+    title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
+    description: siteDescription,
+    siteName: "Aniruddha Chaudhari",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniruddha • Full‑stack Developer",
-    description:
-      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
+    title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
+    description: siteDescription,
   },
 }
 
@@ -51,13 +61,25 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "WebSite",
       url: getSiteUrl(),
-      name: "Aniruddha",
+      name: "Aniruddha Chaudhari",
+      description: siteDescription,
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Aniruddha Chaudhari",
       url: getSiteUrl(),
+      jobTitle: "Software Engineer",
+      description: siteDescription,
+      knowsAbout: [
+        "Software Engineering",
+        "Full-Stack Development",
+        "Next.js",
+        "React",
+        "FastAPI",
+        "Artificial Intelligence",
+        "TypeScript",
+      ],
       sameAs: [
         "https://github.com/aniruddha-chaudhari",
       ],

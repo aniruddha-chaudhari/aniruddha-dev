@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Header from "@/components/header"
 import HeroServer from "@/components/hero-server"
@@ -12,25 +13,27 @@ import Link from "next/link"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
-export const metadata = {
-  title: "Aniruddha Portfolio",
+export const metadata: Metadata = {
+  title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
   description:
-    "A calm, professional, minimal personal portfolio. Monochrome, responsive, accessible, with projects and GitHub activity.",
+    "Portfolio of Aniruddha Chaudhari, a software engineer building full-stack web applications with Next.js, React, FastAPI, AI, and modern cloud technologies.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Aniruddha Portfolio",
+    title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
     description:
-      "A calm, professional, minimal personal portfolio. Monochrome, responsive, accessible, with projects and GitHub activity.",
+      "Explore software engineering projects by Aniruddha Chaudhari built with Next.js, React, FastAPI, AI, and modern web technologies.",
+    url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aniruddha Portfolio",
+    title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
     description:
-      "A calm, professional, minimal personal portfolio. Monochrome, responsive, accessible, with projects and GitHub activity.",
+      "Software engineering portfolio featuring full-stack, AI, Next.js, React, and FastAPI projects.",
   },
 }
-
-
 
 export default function Page() {
   return (
@@ -83,7 +86,7 @@ export default function Page() {
                 <Link
                   href="/projects"
                   className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-sm text-[color:var(--muted)] hover:text-[color:var(--fg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                  aria-label="See all projects"
+                  aria-label="See all software engineering projects"
                 >
                   See all
                   <ArrowRight className="h-4 w-4" />

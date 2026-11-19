@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
-  const graph = getContributionGraph()
+export default async function HomePage() {
+  const graph = await getContributionGraph(SITE.githubUser)
 
   return (
     <>

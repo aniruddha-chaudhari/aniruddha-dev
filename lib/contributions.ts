@@ -57,7 +57,16 @@ export function layoutContributions(days: Day[]): ContributionGraph {
   }
 }
 
-/** The saved contribution data. Swap this for a fetch (e.g. an API route) to make it live. */
-export function getContributionGraph(): ContributionGraph {
-  return layoutContributions((raw as { contributions: Day[] }).contributions)
+const saved = () => layoutContributions((raw as { contributions: Day[] }).contributions)
+
+/** The last year of contributions, fetched live (cached for an hour); falls back to the saved snapshot. */
+export async function getContributionGraph(user: string): Promise<ContributionGraph> {
+  try {
+    const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${user}?y=last`, { next: { revalidate: 3600 } })
+    if (!res.ok) return saved()
+    const data = (await res.json()) as { contributions?: Day[] }
+    return data.contributions?.length ? layoutContributions(data.contributions) : saved()
+  } catch {
+    return saved()
+  }
 }

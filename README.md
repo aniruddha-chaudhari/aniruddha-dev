@@ -1,30 +1,27 @@
-# Modern portfolio website
+# Aniruddha Chaudhari: portfolio
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Next.js 16 (App Router, TypeScript) with an isometric theme.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/aniruddha-chaudharis-projects/v0-modern-portfolio-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/bDWh6SU3IzT)
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm start
+```
 
-## Overview
+## Layout
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- `app/`: routes (`/` and `/projects`), the root layout (fonts, metadata, theme) and `globals.css`.
+- `components/`: page sections and client components (header and theme toggle, project list with hover preview, GitHub card, copy-email button).
+- `components/figures/`: the isometric drawings. `*-svg.ts` hold the generated markup; `*-behavior.ts` hold their interactions (typing desk, spinning gears).
+- `lib/`: site constants, project and contribution helpers.
+- `data/`: `projects.json` (edit this to change the project list) and `contributions.json` (GitHub activity snapshot).
+- `public/`: images, favicon, `og.png`, `robots.txt`.
+- `archive/`: the previous dither version and the static-page generator, zipped for reference.
 
-## Deployment
+Set `NEXT_PUBLIC_SITE_URL` to the production origin so link previews use absolute URLs.
 
-Your project is live at:
+## Adding things
 
-**[https://vercel.com/aniruddha-chaudharis-projects/v0-modern-portfolio-website](https://vercel.com/aniruddha-chaudharis-projects/v0-modern-portfolio-website)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/bDWh6SU3IzT](https://v0.dev/chat/projects/bDWh6SU3IzT)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- New project: add an entry to `data/projects.json` and drop its screenshot in `public/images/`.
+- New page: add `app/<name>/page.tsx`; reuse `SiteHeader` and `SiteFooter`.
+- API route (visitor counter, live GitHub stats): add `app/api/<name>/route.ts`, then fetch it from a client component or replace `getContributionGraph()` in `lib/contributions.ts`.

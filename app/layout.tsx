@@ -1,91 +1,43 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Doto } from 'next/font/google'
-import ClientProviders from '@/components/client-providers'
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { getSiteUrl } from "@/lib/site-url"
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import { SITE } from "@/lib/site"
+import "./globals.css"
 
-const doto = Doto({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-doto",
-})
+const geistSans = Geist({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-geist-sans", display: "swap" })
+const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-geist-mono", display: "swap" })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
-  title: {
-    default: "Aniruddha • Full‑stack Developer",
-    template: "%s • Aniruddha",
-  },
-  description:
-    "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(SITE.url),
+  title: SITE.name,
+  description: SITE.role,
+  icons: { icon: "/favicon.svg" },
   openGraph: {
     type: "website",
-    url: "/",
-    title: "Aniruddha • Full‑stack Developer",
-    description:
-      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
-    siteName: "Aniruddha",
+    title: SITE.name,
+    description: SITE.role,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Aniruddha Chaudhari, software engineer, beside an isometric drawing of a desk and monitor",
+      },
+    ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Aniruddha • Full‑stack Developer",
-    description:
-      "Full‑stack developer portfolio featuring projects, skills, and experience building modern web apps.",
-  },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      url: getSiteUrl(),
-      name: "Aniruddha",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Aniruddha Chaudhari",
-      url: getSiteUrl(),
-      sameAs: [
-        "https://github.com/aniruddha-chaudhari",
-      ],
-    },
-  ]
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" }
 
+// Runs before paint so a saved or system light theme doesn't flash dark first.
+const THEME_SCRIPT = `try{var t=localStorage.getItem("iso-theme");document.body.dataset.theme=t||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}`
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-  --font-doto: ${doto.variable};
-}
-        `}</style>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className={`${doto.variable}`}>
-        <ClientProviders>
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        </ClientProviders>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="iso" data-theme="dark" suppressHydrationWarning>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <div className="wrap">{children}</div>
       </body>
     </html>
   )

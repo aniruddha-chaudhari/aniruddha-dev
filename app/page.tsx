@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ContribCard } from "@/components/contrib-card"
 import { CopyEmailButton } from "@/components/copy-email-button"
@@ -10,6 +11,25 @@ import { SiteHeader } from "@/components/site-header"
 import { getContributionGraph } from "@/lib/contributions"
 import { featuredProjects } from "@/lib/projects"
 import { ABOUT, SITE } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: { absolute: SITE.title },
+  description:
+    "Portfolio of Aniruddha Chaudhari, a software engineer building full-stack web applications with Next.js, React, FastAPI, AI, and modern cloud technologies.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: SITE.title,
+    description:
+      "Explore software engineering projects by Aniruddha Chaudhari built with Next.js, React, FastAPI, AI, and modern web technologies.",
+    url: "/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: "Software engineering portfolio featuring full-stack, AI, Next.js, React, and FastAPI projects.",
+  },
+}
 
 export default function HomePage() {
   const graph = getContributionGraph()

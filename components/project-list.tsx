@@ -1,7 +1,9 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useRef } from "react"
 import { ArrowIcon } from "./icons"
+import { projectSlug } from "@/lib/project-slug"
 import { sentence, tagLabel, type Project } from "@/lib/projects"
 
 type Props = {
@@ -140,10 +142,10 @@ export function ProjectList({ projects, all, highlight, onPull }: Props) {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="idx-thumb" src={p.image} alt="" loading="lazy" />
-              <a className="idx-name" href={p.live || p.repo} target="_blank" rel="noopener">
+              <Link className="idx-name" href={`/projects/${projectSlug(p.title)}`}>
                 <span className="dot" data-live={live} title={live ? "Live" : "Code only"} />
                 {p.title}
-              </a>
+              </Link>
               <div className="idx-text">
                 <p>{sentence(p.description)}</p>
                 <p className="idx-stack">{p.tags.slice(0, 3).map(tagLabel).join(" · ")}</p>

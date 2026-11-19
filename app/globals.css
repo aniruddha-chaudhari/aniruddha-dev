@@ -409,3 +409,10 @@ h1,h2,h3{color:var(--anatomy-strong);font-weight:500;margin:0;text-wrap:balance}
 @media (prefers-reduced-motion:reduce){#fig-rack .rk-unit{transition:none}#fig-rack .rk-led{animation:none!important}}
 /* contribution card: cells are drawn in grid units now, so strokes scale with them */
 #fig-contrib .cb-cell[data-hover] .cb-ct{stroke-width:.5px}
+
+/* project detail page */
+.detail{display:grid;gap:18px;padding-top:8px}
+.detail h1{margin:0}
+.detail-lede{margin:0;max-width:60ch;font-size:16px;line-height:1.6;color:var(--anatomy-text)}
+.detail-shot{margin:6px 0 0;overflow:hidden}
+.detail-shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}

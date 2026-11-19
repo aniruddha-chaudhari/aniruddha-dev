@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { projectSlug } from "@/lib/project-slug"
 import { useEffect, useRef, useState } from "react"
 import { ProjectList } from "./project-list"
 import { rackSvg } from "./figures/rack-svg"
@@ -14,6 +16,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState(-1)
   const [from, setFrom] = useState<"list" | "rack">("list")
   const rack = useRef<HTMLElement>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const root = rack.current
@@ -34,7 +37,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
     const click = (e: Event) => {
       const u = unitOf(e)
       const p = u && projects[Number(u.dataset.unit)]
-      if (p) window.open(p.live || p.repo, "_blank", "noopener")
+      if (p) router.push(`/projects/${projectSlug(p.title)}`)
     }
     root.addEventListener("pointerover", over)
     root.addEventListener("pointerout", out)
@@ -45,7 +48,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       root.removeEventListener("pointerout", out)
       root.removeEventListener("click", click)
     }
-  }, [projects])
+  }, [projects, router])
 
   useEffect(() => {
     rack.current?.querySelectorAll<SVGElement>("[data-unit]").forEach((u) => {
@@ -60,8 +63,11 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           <Link className="back" href="/">
             ← Home
           </Link>
-          <h1>Projects</h1>
-          <p>Everything I&apos;ve built and shipped, from a hackathon arcade to retrieval agents.</p>
+          <h1>Software engineering projects</h1>
+          <p>
+            Full-stack, AI, and interactive web projects built with technologies including Next.js, React, FastAPI, Gemini,
+            Three.js, MongoDB, Qdrant, and Pinecone.
+          </p>
         </div>
         <figure
           className="fig rack-fig"

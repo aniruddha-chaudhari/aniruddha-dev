@@ -8,7 +8,7 @@ function siteUrl() {
 export const SITE = {
   name: "Aniruddha Chaudhari",
   role: "Software engineer. I build full-stack products and AI agents.",
-  lede: "Agents that do real work, wrapped in fast, clean apps.",
+  lede: "Builder, tinkerer, content creator. Always learning something new.",
   title: "Aniruddha Chaudhari | Software Engineer & Full-Stack Developer",
   description:
     "Aniruddha Chaudhari is a software engineer and full-stack developer building modern web applications with Next.js, React, FastAPI, AI, and cloud technologies.",

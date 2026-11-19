@@ -49,3 +49,22 @@ export function LinkedInIcon() {
     </svg>
   )
 }
+
+const line = { fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" } as const
+
+export function MailIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" style={line}>
+      <rect x="1.5" y="3" width="13" height="10" rx="2" />
+      <path d="M2.2 4.6L8 8.8l5.8-4.2" />
+    </svg>
+  )
+}
+
+export function CheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" style={line}>
+      <path d="M3 8.5l3.2 3.2L13 4.8" />
+    </svg>
+  )
+}

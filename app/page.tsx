@@ -53,7 +53,6 @@ export default function HomePage() {
               <a className="btn" href={SITE.cv} target="_blank" rel="noopener">
                 Download CV
               </a>
-              <CopyEmailButton email={SITE.email} className="btn btn-ghost" />
             </div>
           </div>
           <DeskFigure />
@@ -69,6 +68,9 @@ export default function HomePage() {
                 <LinkedInIcon />
                 LinkedIn
               </a>
+            </li>
+            <li>
+              <CopyEmailButton email={SITE.email} social />
             </li>
           </ul>
         </section>

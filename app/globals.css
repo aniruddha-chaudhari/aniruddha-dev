@@ -178,8 +178,8 @@ h1,h2,h3{color:var(--anatomy-strong);font-weight:500;margin:0;text-wrap:balance}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .socials{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 20px;list-style:none;margin:0;padding:14px 0 0;border-top:1px solid var(--rule)}
 .socials a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;text-decoration:none;color:var(--anatomy-text);padding:4px 0}
-.socials a:hover,.socials .social-btn:hover{color:var(--anatomy-strong)}
-.socials .social-btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:13.5px;color:var(--anatomy-text);background:none;border:0;padding:4px 0;cursor:pointer}
+.socials a:hover,.socials .social-btn:hover,.contact-alt .social-btn:hover{color:var(--anatomy-strong)}
+.socials .social-btn,.contact-alt .social-btn{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:13.5px;color:var(--anatomy-text);background:none;border:0;padding:4px 0;cursor:pointer}
 .socials .social-btn[data-done]{color:var(--green)}
 .socials svg{width:15px;height:15px;fill:currentColor;flex:none}
 
@@ -436,3 +436,35 @@ h1,h2,h3{color:var(--anatomy-strong);font-weight:500;margin:0;text-wrap:balance}
 .card-links{position:relative;z-index:1;display:flex;gap:4px}
 .card-links a{display:grid;place-items:center;width:32px;height:32px;border-radius:7px;color:var(--anatomy-muted)}
 .card-links svg{width:17px;height:17px;fill:currentColor}
+
+/* freelance form */
+.cform{display:grid;gap:16px;max-width:520px}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cform label{display:grid;gap:6px}
+.cform label>span,.cform legend{font-family:var(--anatomy-mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--anatomy-muted)}
+.cform input:not([type=checkbox]),.cform textarea{font:inherit;font-size:14px;color:var(--anatomy-strong);background:var(--btn);border:0;border-radius:6px;box-shadow:0 0 0 1px var(--rule);padding:10px 12px;width:100%;resize:vertical}
+.cform input:focus-visible,.cform textarea:focus-visible{outline:none;box-shadow:0 0 0 1px var(--anatomy-mid)}
+.cform fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+.cform-chips{display:flex;flex-wrap:wrap;gap:8px}
+.cform .chip{display:inline-flex;font-size:13px;padding:8px 12px;border-radius:7px;background:var(--btn);box-shadow:0 0 0 1px var(--rule);color:var(--anatomy-text);cursor:pointer}
+.cform .chip[data-on]{color:var(--anatomy-strong);box-shadow:0 0 0 1px var(--anatomy-mid)}
+.cform .chip input{position:absolute;opacity:0;pointer-events:none}
+.cform .chip:has(input:focus-visible){box-shadow:0 0 0 1px var(--anatomy-mid)}
+.cform-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.cform-note{font-size:13px;color:var(--anatomy-muted)}
+.cform-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.cform-done h3{margin:0 0 4px;font-size:18px}.cform-done p{margin:0;color:var(--anatomy-text)}
+@media (max-width:640px){.cform-row{grid-template-columns:1fr}}
+
+.contact-alt{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;font-size:13px;color:var(--anatomy-muted)}
+.contact-alt .social-btn{font-size:13px}
+
+/* contact modal */
+.modal{width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 32px);margin:auto;padding:22px;border:0;color:var(--anatomy-text);background:var(--anatomy-shade-1);box-shadow:0 0 0 1px var(--rule),0 30px 80px -20px #000a;overflow:auto}
+.modal::backdrop{background:#0009;backdrop-filter:blur(3px)}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
+.modal-head h2{margin:0;font-size:19px;letter-spacing:-.01em;color:var(--anatomy-strong)}
+.modal-x{font:inherit;font-size:24px;line-height:1;width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:7px;background:none;color:var(--anatomy-muted);cursor:pointer}
+.modal-x:hover{color:var(--anatomy-strong);background:var(--btn)}
+.modal .cform{max-width:none}
+.contact-alt{gap:10px 16px}

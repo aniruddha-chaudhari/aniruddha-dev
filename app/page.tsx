@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ContribCard } from "@/components/contrib-card"
+import { ContactDialog } from "@/components/contact-dialog"
 import { CopyEmailButton } from "@/components/copy-email-button"
 import { DeskFigure } from "@/components/desk-figure"
 import { GearsFigure } from "@/components/gears-figure"
@@ -126,17 +127,12 @@ export default async function HomePage() {
               <h2 className="contact-line">Open for freelance projects.</h2>
               <p className="contact-note">Websites, web apps and AI features, from the first sketch to launch. Tell me what you&apos;re building.</p>
             </div>
-            <div>
-              <div className="actions">
-                <a className="btn btn-solid" href={`mailto:${SITE.email}?subject=${encodeURIComponent("Freelance project")}`}>
-                  Hire me <ArrowIcon />
-                </a>
-                <CopyEmailButton email={SITE.email} className="btn" />
-                <a className="btn" href={SITE.linkedin} target="_blank" rel="noopener">
-                  LinkedIn <ArrowIcon />
-                </a>
-              </div>
-              <p className="email-plain">{SITE.email}</p>
+            <div className="contact-alt">
+              <ContactDialog email={SITE.email} />
+              <CopyEmailButton email={SITE.email} social />
+              <a className="social-btn" href={SITE.linkedin} target="_blank" rel="noopener">
+                LinkedIn
+              </a>
             </div>
           </div>
           <GearsFigure />

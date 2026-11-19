@@ -25,3 +25,7 @@ Set `NEXT_PUBLIC_SITE_URL` to the production origin so link previews use absolut
 - New project: add an entry to `data/projects.json` and drop its screenshot in `public/images/`.
 - New page: add `app/<name>/page.tsx`; reuse `SiteHeader` and `SiteFooter`.
 - API route (visitor counter, live GitHub stats): add `app/api/<name>/route.ts`, then fetch it from a client component or replace `getContributionGraph()` in `lib/contributions.ts`.
+
+## Contact form
+
+The freelance form on the home page sends through [Web3Forms](https://web3forms.com). Create a free access key for your email, then set it as `NEXT_PUBLIC_WEB3FORMS_KEY` (in `.env.local` and in the Vercel project settings). Without the key the form falls back to opening an email draft.

@@ -123,17 +123,17 @@ export default async function HomePage() {
         <section className="block contact" id="contact">
           <div className="contact-text">
             <div>
-              <h2 className="contact-line">Have something to build? I&apos;m one email away.</h2>
-              <p className="contact-note">Websites, web apps and AI features, from the first sketch to launch.</p>
+              <h2 className="contact-line">Open for freelance projects.</h2>
+              <p className="contact-note">Websites, web apps and AI features, from the first sketch to launch. Tell me what you&apos;re building.</p>
             </div>
             <div>
               <div className="actions">
-                <CopyEmailButton email={SITE.email} className="btn btn-solid" />
+                <a className="btn btn-solid" href={`mailto:${SITE.email}?subject=${encodeURIComponent("Freelance project")}`}>
+                  Hire me <ArrowIcon />
+                </a>
+                <CopyEmailButton email={SITE.email} className="btn" />
                 <a className="btn" href={SITE.linkedin} target="_blank" rel="noopener">
                   LinkedIn <ArrowIcon />
-                </a>
-                <a className="btn" href={SITE.github} target="_blank" rel="noopener">
-                  GitHub <ArrowIcon />
                 </a>
               </div>
               <p className="email-plain">{SITE.email}</p>

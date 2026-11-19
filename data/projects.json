@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "id": "p8",
+      "title": "VantageZero",
+      "description": "Hardware buildability intelligence that tracks component stock, pricing, lead times and lifecycle data across suppliers, with validated, self-healing collectors.",
+      "image": "/images/vantagezero.png",
+      "tags": ["NextJS", "Postgres", "Bright Data"],
+      "live": "https://vantagezero.vercel.app",
+      "repo": "https://github.com/aniruddha-chaudhari/vantagezero",
+      "featured": true
+    },
+    {
       "id": "p1",
       "title": "Nebulax-Arcade",
       "description": "A frontend arcade experience built for a hackathon with Next.js, Phaser.js, and Tailwind CSS.",
@@ -62,7 +72,7 @@
       "image": "/images/Screenshot_2025-09-29_182316_zurzt6.png",
       "tags": ["FastAPI", "React", "Vite", "Qdrant", "Gemini", "LangChain"],
       "repo": "https://github.com/aniruddha-chaudhari/mathagent",
-      "featured": true
+      "featured": false
     }
   ]
 }

@@ -5,7 +5,7 @@ import { CopyEmailButton } from "@/components/copy-email-button"
 import { DeskFigure } from "@/components/desk-figure"
 import { GearsFigure } from "@/components/gears-figure"
 import { ArrowIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
-import { ProjectList } from "@/components/project-list"
+import { ProjectCards } from "@/components/project-cards"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { getContributionGraph } from "@/lib/contributions"
@@ -107,7 +107,7 @@ export default function HomePage() {
               All projects <ArrowIcon />
             </Link>
           </div>
-          <ProjectList projects={featuredProjects()} />
+          <ProjectCards projects={featuredProjects()} />
         </section>
 
         <section className="block" id="github">

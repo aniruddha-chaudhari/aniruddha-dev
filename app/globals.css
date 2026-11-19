@@ -418,3 +418,21 @@ h1,h2,h3{color:var(--anatomy-strong);font-weight:500;margin:0;text-wrap:balance}
 .detail-lede{margin:0;max-width:60ch;font-size:16px;line-height:1.6;color:var(--anatomy-text)}
 .detail-shot{margin:6px 0 0;overflow:hidden}
 .detail-shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+
+/* home project cards */
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:10px 10px 14px;background:var(--anatomy-shade-1);box-shadow:0 0 0 1px var(--rule)}
+.card-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:6px;box-shadow:0 0 0 1px var(--rule)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:4px;margin-top:6px}
+.card-name{font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--anatomy-strong);text-decoration:none}
+.card-name::after{content:"";position:absolute;inset:0}
+.card-name:focus-visible{outline:none}.card:has(.card-name:focus-visible){box-shadow:0 0 0 1px var(--anatomy-mid)}
+.card-status{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--anatomy-muted);white-space:nowrap}
+.card-status[data-live="true"]{color:var(--anatomy-text)}
+.card-desc{margin:0;padding-inline:4px;font-size:14px;line-height:1.55;color:var(--anatomy-text)}
+.card-foot{margin-top:auto;padding:6px 4px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.card-tags li{font-size:12px;line-height:1;padding:7px 10px;border-radius:7px;background:var(--btn);box-shadow:0 0 0 1px var(--rule);color:var(--anatomy-strong)}
+.card-links{position:relative;z-index:1;display:flex;gap:4px}
+.card-links a{display:grid;place-items:center;width:32px;height:32px;border-radius:7px;color:var(--anatomy-muted)}
+.card-links svg{width:17px;height:17px;fill:currentColor}
